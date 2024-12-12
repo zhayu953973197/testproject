@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<CONFIG>
+	<!--name : name of module macros-->
+	<!--value : indicates whether support this feature-->
+	<!--open_source : Indicates whether to open the source.-->
+	<!--path : directory where the module is located-->
+	<!--net_attr ：Indicates the networking mode. This parameter is optional( optional value: all/separate).separate indicates compile multiple times by CCO/STA. all indicates compile only once.-->
+	<!--lib_name : Indicates the library name of the module-->
+	<!--include_name : Indicates the description of external interfaces provided by the module-->
+	<!--inner_include_name : Indicates the description of interfaces between modules provided by the module-->
+	<!--is_dyn : Indicates wherther dynamic loading or fixed storage. if filled with 'no', indicates fixed storage, the name extention must be '*.o'; if filled with 'yes', indicates dynamic loading,the name extention must be '*.a';-->
+	<MODULE name="EXT_MODULE_MRS" value="yes" open_source="yes" path="app/mrs" net_attr="separate" lib_name="libmrs.a" include_name="soc_mdm_mrs.h" inner_include_name="soc_inner_mrs.h" is_dyn="yes" help="">
+	<DEV name="PRODUCT_CFG_PRODUCT_TYPE_CCO">
+		<item type="0x1"  name = "PRODUCT_CFG_DEBUG_JTAG_LED_MRS" value = "no" depends ="" help="" ></item>
+        <!--partition table : partition table configuration-->
+        <!-- Start address and size of BOOT. Influence:layout of the burning file. CNComments: BOOT起始地址与大小。影响:烧片文件布局。-->
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_BOOT_ST_ADDR" value = "0x0" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_BOOT_SIZE" value = "0x4000" depends ="" help="" ></item>
+        <!-- Start address and size of factory NV space 1. Influence:layout of the burning file. CNComments: 描述:工厂区NV区1起始地址与大小。影响:烧片文件布局。-->
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_FTM1_ST_ADDR" value = "0x4000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_FTM1_SIZE" value = "0x1000" depends ="" help="" ></item>
+        <!-- Start address and size of factory NV space 2. Influence:layout of the burning file. CNComments: 描述:工厂区NV区2起始地址与大小。影响:烧片文件布局。-->
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_FTM2_ST_ADDR" value = "0x5000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_FTM2_SIZE" value = "0x1000" depends ="" help="" ></item>
+        <!-- Start address and size of NV file backup. Influence:layout of the burning file. CNComments: 描述:NV原文件起始地址与大小。影响:烧片文件布局。-->
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_NV_FILE_ST_ADDR" value = "0x6000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_NV_FILE_SIZE" value = "0x1000" depends ="" help="" ></item>
+        <!-- Start address and size of kernel, DO NOT change the start address. Influence:layout of the burning file. CNComments: 描述:Kernel起始地址与大小。影响:烧片文件布局。注意不要修改kernel起始地址 -->
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_KERNEL_ST_ADDR" value = "0x7000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_KERNEL_SIZE" value = "0x80000" depends ="" help="" ></item>
+        <!-- Start address and size of upg file backup. Influence:layout of the burning file. CNComments: 描述:升级备份区地址与大小。影响:烧片文件布局。-->
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_UPG_ST_ADDR" value = "0x87000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_UPG_SIZE" value = "0x4D000" depends ="" help="" ></item>
+        <!-- Start address and size of work NV space. Influence:layout of the burning file. CNComments: 描述:NV工作区地址与大小。影响:烧片文件布局。-->
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_NV_WORK_ST_ADDR" value = "0xD4000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_NV_WORK_SIZE" value = "0x2000" depends ="" help="" ></item>
+        <!-- Start address and size of user space. Influence:layout of the burning file. CNComments: 描述:用户区地址与大小。影响:烧片文件布局。-->
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_USER_ST_ADDR" value = "0xD6000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_USER_SIZE" value = "0x29000" depends ="" help="" ></item>
+        <!-- Start address and size of crash information logging. Influence:layout of the burning file. CNComments: 描述:用户空间死机信息与大小。影响:烧片文件布局。-->
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_CRASH_ST_ADDR" value = "0xFF000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_CRASH_SIZE" value = "0x1000" depends ="" help="" ></item>
+        
+        <!--partition table version control. CNComments:分区表版本控制配置-->
+        <!--partition table version support switch. CNComments:分区表版本控制开关 -->
+        <item type="0x1"  name = "PARTITION_VER_CTL_SUPPORT_ENABLE" value = "0x1" depends ="" help="" ></item>
+        <!--partition table version number, value MUST increase. CNComments:分区表版本号，使用时必须是原有版本号递增 -->
+        <item type="0x1"  name = "PARTITION_VER_CTL_NUM" value = "0x2" depends ="" help="" ></item>
+        <!--partition table version compatible bit map, value MUST increase. CNComments:分区表版本号，位或的方式表示支持升级的版本，与各版本的bit_map位与，如果结果非0表示支持对该版本的升级兼容。 -->
+        <item type="0x1"  name = "PARTITION_VER_CTL_COMPATIBLE" value = "0x3" depends ="" help="" ></item>
+        
+        <!--partition table transfer control . CNComments:分区表搬运控制-->
+        <!--partition table transfer logging control. PRODUCT_CFG_PARTITION_LOG_TEMP_ADDR is valid when open the switch. CNComments:分区表搬运日志开关，开启时，PRODUCT_CFG_PARTITION_LOG_TEMP_ADDR生效 -->
+        <item type="0x1"  name = "PARTITION_TRANS_LOG_ENABLE" value = "0x0" depends ="" help="" ></item>
+        <!--partition table transfer ID . CNComments:待修改分区ID（对应枚举soc_flash_partition_table_e），其顺序为搬移顺序，如果场景为向后扩展空间，则采用地址从高到低搬移不会产生数据丢失。-->
+        <item type="0x1"  name = "PARTITION_TRANS_TB_ID" value = "6,5,4" depends ="" help="" ></item>
+        <!--partition table transfer logging address . CNComments:存储搬移日志的地址，需要8k, 默认使用用户区末端空间，当开启时，防止掉电搬运失败 -->
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_LOG_TEMP_ADDR" value = "0xFD000" depends ="" help="" ></item>
+	</DEV>
+	<DEV name="PRODUCT_CFG_PRODUCT_TYPE_STA">
+        <item type="0x1"  name = "PRODUCT_CFG_DEBUG_JTAG_LED_MRS" value = "no" depends ="" help="" ></item>
+        
+        <!--partition table. CNComments:分区表配置-->
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_BOOT_ST_ADDR" value = "0x0" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_BOOT_SIZE" value = "0x4000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_FTM1_ST_ADDR" value = "0x4000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_FTM1_SIZE" value = "0x1000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_FTM2_ST_ADDR" value = "0x5000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_FTM2_SIZE" value = "0x1000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_NV_FILE_ST_ADDR" value = "0x6000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_NV_FILE_SIZE" value = "0x1000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_KERNEL_ST_ADDR" value = "0x7000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_KERNEL_SIZE" value = "0x46000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_UPG_ST_ADDR" value = "0x4D000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_UPG_SIZE" value = "0x2C000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_NV_WORK_ST_ADDR" value = "0x79000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_NV_WORK_SIZE" value = "0x2000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_USER_ST_ADDR" value = "0x7B000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_USER_SIZE" value = "0x4000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_CRASH_ST_ADDR" value = "0x7F000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_CRASH_SIZE" value = "0x1000" depends ="" help="" ></item>
+        <!--partition table version control. CNComments:分区表版本控制配置-->
+        <item type="0x1"  name = "PARTITION_VER_CTL_SUPPORT_ENABLE" value = "0x1" depends ="" help="" ></item>
+        <item type="0x1"  name = "PARTITION_VER_CTL_NUM" value = "0x2" depends ="" help="" ></item>
+        <item type="0x1"  name = "PARTITION_VER_CTL_COMPATIBLE" value = "0x3" depends ="" help="" ></item>
+        <!--partition table transfer control. CNComments:分区表搬运控制-->
+        <item type="0x1"  name = "PARTITION_TRANS_LOG_ENABLE" value = "0x0" depends ="" help="" ></item>
+        <item type="0x1"  name = "PARTITION_TRANS_TB_ID" value = "6,5,4" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_LOG_TEMP_ADDR" value = "0x7D000" depends ="" help="" ></item>
+	</DEV>
+    <DEV name="PRODUCT_CFG_PRODUCT_TYPE_NDM">
+        <!--partition table. CNComments:分区表配置-->
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_BOOT_ST_ADDR" value = "0x0" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_BOOT_SIZE" value = "0x4000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_FTM1_ST_ADDR" value = "0x4000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_FTM1_SIZE" value = "0x1000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_FTM2_ST_ADDR" value = "0x5000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_FTM2_SIZE" value = "0x1000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_NV_FILE_ST_ADDR" value = "0x6000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_NV_FILE_SIZE" value = "0x1000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_KERNEL_ST_ADDR" value = "0x7000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_KERNEL_SIZE" value = "0x46000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_UPG_ST_ADDR" value = "0x4D000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_UPG_SIZE" value = "0x2C000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_NV_WORK_ST_ADDR" value = "0x79000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_NV_WORK_SIZE" value = "0x2000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_USER_ST_ADDR" value = "0x7B000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_USER_SIZE" value = "0x4000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_CRASH_ST_ADDR" value = "0x7F000" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_CRASH_SIZE" value = "0x1000" depends ="" help="" ></item>
+        <!--partition table version control. CNComments:分区表版本控制配置-->
+        <item type="0x1"  name = "PARTITION_VER_CTL_SUPPORT_ENABLE" value = "0x1" depends ="" help="" ></item>
+        <item type="0x1"  name = "PARTITION_VER_CTL_NUM" value = "0x2" depends ="" help="" ></item>
+        <item type="0x1"  name = "PARTITION_VER_CTL_COMPATIBLE" value = "0x3" depends ="" help="" ></item>
+        <!--partition table transfer control. CNComments:分区表搬运控制-->
+        <item type="0x1"  name = "PARTITION_TRANS_LOG_ENABLE" value = "0x0" depends ="" help="" ></item>
+        <item type="0x1"  name = "PARTITION_TRANS_TB_ID" value = "6,5,4" depends ="" help="" ></item>
+        <item type="0x1"  name = "PRODUCT_CFG_PARTITION_LOG_TEMP_ADDR" value = "0x7D000" depends ="" help="" ></item>
+     </DEV>
+	<item type="0x1"  name = "PRODUCT_CFG_DEBUG_CRASH_MRS" value = "no" depends ="" help="" ></item>
+	</MODULE>
+</CONFIG>

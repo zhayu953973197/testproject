@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--CompanyNameMagicTag-->
+<!--definition of NV ID-->
+<!--V1.0-->
+<SourceData>
+  <GROUP NAME="MRS" ID="0x4" FEATURE="1&lt;&lt;0,1&lt;&lt;4,1&lt;&lt;5" USEDMODE="0" PARAM_DEF_FILE="../nv/nv_app_struct_def.txt" MODE="LTE">
+    <NV ID="0xA0" NAME="Virtual_table" PARAM_NAME="mrs_simu_meter_inf" PARAM_VALUE="{0,0,0,0}" CATEGORY="APP" DEV="STA" BROADCAST="0" DESCRIPTION=""></NV>
+    <NV ID="0xA1" NAME="MRS_TF_CCO" PARAM_NAME="mrs_cco_tf_inf" PARAM_VALUE="{120,60,180,60,1200,2,120,3,12,50,67,0}" CATEGORY="APP" DEV="CCO" BROADCAST="0" DESCRIPTION="MRS CCO params for transformer identification"></NV>
+    <NV ID="0xA2" NAME="MRS_TF_STA" PARAM_NAME="mrs_sta_tf_inf" PARAM_VALUE="{60,1800,900,600}" CATEGORY="APP" DEV="STA" BROADCAST="0" DESCRIPTION="MRS sta params for transformer identification"></NV>
+  </GROUP>
+</SourceData>
